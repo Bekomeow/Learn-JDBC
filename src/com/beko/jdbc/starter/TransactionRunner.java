@@ -16,7 +16,7 @@ public class TransactionRunner {
         PreparedStatement deleteChildStatement = null;
         try {
 //            1. Создание соединения
-            connection = ConnectionManager.open();
+            connection = ConnectionManager.get();
             deleteParentStatement = connection.prepareStatement(deleteParent);
             deleteChildStatement = connection.prepareStatement(deleteChild);
 

@@ -13,7 +13,7 @@ public class JdbcRunner {
             INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, job_title, salary, department) VALUES
             (?, ?, ?, ?, ?, ?, ?, ?);
         """;
-        try (var connection = ConnectionManager.open()) {
+        try (var connection = ConnectionManager.get()) {
             var metaData = connection.getMetaData();
             var catalogs = metaData.getCatalogs();
             while (catalogs.next()) {
@@ -30,7 +30,8 @@ public class JdbcRunner {
                     }
                 }
             }
-
+        } finally {
+            ConnectionManager.closePool();
         }
     }
 }

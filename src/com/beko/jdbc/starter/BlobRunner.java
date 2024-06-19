@@ -20,7 +20,7 @@ public class BlobRunner {
                 FROM images
                 WHERE id = ?
                 """;
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, 1);
             var resultSet = preparedStatement.executeQuery();
@@ -35,7 +35,7 @@ public class BlobRunner {
         String query = """
         INSERT INTO images(image) VALUES (?)
         """;
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setBytes(1, Files.readAllBytes(Path.of("resources", "meow.jpg")));
             preparedStatement.executeUpdate();
