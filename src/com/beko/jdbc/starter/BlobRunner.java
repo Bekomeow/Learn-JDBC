@@ -1,4 +1,6 @@
-package com.beko.jdbc.starter.util;
+package com.beko.jdbc.starter;
+
+import com.beko.jdbc.starter.util.ConnectionManager;
 
 import java.io.IOException;
 import java.nio.file.Files;
