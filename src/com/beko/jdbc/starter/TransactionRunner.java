@@ -26,11 +26,11 @@ public class TransactionRunner {
             deleteParentStatement.setInt(1, parentId);
             deleteChildStatement.setInt(1, parentId);
 
+
+
 //            3. Выполнение SQL-запросов
             deleteChildStatement.executeUpdate();
-            if(true) {
-                throw new RuntimeException();
-            }
+
             deleteParentStatement.executeUpdate();
 
 //            4. Фиксация транзакции
